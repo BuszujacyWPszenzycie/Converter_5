@@ -1,0 +1,263 @@
+@use 'colors' as *;
+@use 'mixin' as *;
+@use 'animation' as *;
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-size: 1rem;
+	font-family: 'Raleway', sans-serif;
+	font-family: 'Space Mono', monospace;
+	background-color: $white;
+}
+
+.main {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+}
+
+.box {
+	width: 50%;
+	height: 100%;
+	// background-color: $lightgrey;
+
+	&__left {
+		position: relative;
+		width: 80%;
+	}
+
+	&__right {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		// width: 30%;
+	}
+	&__image {
+		flex-shrink: 0;
+		min-width: 100%;
+		min-height: 100%;
+	}
+
+	&__modal {
+	}
+}
+
+.btn {
+	@include btn;
+
+	&__span {
+		color: $dark;
+		opacity: 1;
+		position: relative;
+		font-weight: bold;
+		&:hover {
+			color: $red;
+		}
+		&:hover::before {
+			content: '';
+			animation: borderAnimation 1s;
+		}
+	}
+}
+
+.nav {
+	height: 10%;
+	border-bottom: 1px solid $grey;
+	padding: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	// box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 0.4);
+
+	&__icon {
+		font-size: 3rem;
+		color: $red;
+		cursor: pointer;
+		padding-right: 2rem;
+		padding-left: 2rem;
+		transition: transform 0.4s;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+}
+
+.wrapper {
+	&__switch {
+		width: 90px;
+		height: 40px;
+		border-radius: 100px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		perspective: 1000px;
+		background-color: $white;
+		box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2);
+		transition: background-color 0.4s;
+	}
+	&__title {
+		width: 100%;
+		height: 90%;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	&__buttons {
+		display: flex;
+		align-items: center;
+		// box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 0.4);
+	}
+
+	&__selection {
+		display: flex;
+		justify-content: end;
+		width: 60%;
+		// background-color: red;
+	}
+}
+
+.icon {
+	font-size: 2.3rem;
+	padding: 1rem;
+	cursor: pointer;
+	transition: margin-left 0.4s;
+	color: $sunny;
+}
+
+.modal {
+	padding-top: 7rem;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 90%;
+	background-color: $white;
+	transform: translateX(-1500px);
+	transition: transform 1s;
+	&__btn {
+		@include radioLabel;
+	}
+
+	&__title {
+		font-size: 3rem;
+		margin-bottom: 2rem;
+		// background-color: $lightgrey;
+	}
+
+	&__selection {
+		width: 85%;
+		align-items: center;
+		display: flex;
+		margin: 2rem;
+		justify-content: space-around;
+	}
+}
+
+.from {
+	&__p {
+		font-size: 3rem;
+		margin: 2rem;
+		// background-color: aqua;
+	}
+
+	&__select {
+		@include boxItems;
+		cursor: pointer;
+	}
+
+	&__option {
+		cursor: pointer;
+		&:focus {
+			background-color: $darkgold;
+		}
+
+		&:hover {
+			background-color: $darkgold;
+		}
+	}
+
+	&__input {
+		@include boxItems;
+		&::placeholder {
+			color: $lightgrey;
+		}
+	}
+
+	&__btn {
+		@include boxItems;
+		cursor: pointer;
+		transition: background-color 0.4s;
+		&:hover {
+			background-color: $darkgold;
+		}
+	}
+}
+
+.title {
+	font-size: 5rem;
+	text-transform: uppercase;
+	font-family: 'Space Mono', monospace;
+	color: $red;
+	padding: 4rem;
+	padding-bottom: 0;
+}
+
+.subtitle {
+	font-size: 2rem;
+	padding: 4rem;
+	color: $lightred;
+}
+
+.body-night {
+	background-color: $dark;
+}
+
+.wrapper-night {
+	box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.icon-night {
+	margin-left: 55%;
+	color: $moon;
+}
+
+.btn-night {
+	color: $white;
+}
+
+.show-modal {
+	transform: translateY(0);
+}
+
+.modal-night {
+	background-color: $dark;
+}
+
+input[type='radio']:checked + label {
+	background-color: $gold;
+	color: $dark;
+}
+
+.test {
+	font-size: 4rem;
+	&:focus {
+		background-color: red;
+	}
+}
